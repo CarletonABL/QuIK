@@ -57,7 +57,7 @@ function [filepath, data] = benchmark2(opt)
 
         % Run through generation process
         % This will take a while
-        utils.progress('processing')
+        utils.progress('Creating singular poses...')
         for j = 1:nConds
             utils.progress(j/nConds);
             condNum = condNums(j);
@@ -80,9 +80,8 @@ function [filepath, data] = benchmark2(opt)
         end
 
         % Save results
-        benchDir = fileparts(mfilename('fullpath'));
         subDir = sprintf('%s_%s', computer, date);
-        saveDir = fullfile( benchDir, 'save_data', 'singular_poses', subDir );
+        saveDir = fullfile( utils.QuIK_root, 'matlab', 'save_data', 'singular_poses', subDir );
         if ~exist( saveDir, 'dir' )
             mkdir( saveDir );
         end
@@ -126,7 +125,7 @@ function [filepath, data] = benchmark2(opt)
         err2 = zeros(nTests, nConds);
         
         % Iterate through tests
-        utils.progress( 'processing' );
+        utils.progress( 'Running benchmarks...' );
         for k = 1:nTests
             param = params{k};
 
@@ -141,8 +140,14 @@ function [filepath, data] = benchmark2(opt)
                 Qstart_j = benchmark.perturbPose( Qtarget_j, opt.perturbation, repeatable = true);
 
                 % Forward kinematics
-                Twt_target = RU.FK(r.DHx, r.Tbase, Qtarget_j, 7, r.Ttool);
-                Twt_start = RU.FK(r.DHx, r.Tbase, Qstart_j, 7, r.Ttool);
+                Twt_target = zeros(4,4,N);
+                Twt_start = zeros(4,4,N);
+                for i = 1:N
+                    Twt_target_i = QuIK.FK(r, Qtarget_j(:, i));
+                    Twt_target(:, :, i) = Twt_target_i(:, :, end);
+                    Twt_start_i = QuIK.FK(r, Qstart_j(:, i));
+                    Twt_start(:, :, i) = Twt_start_i(:, :, end);
+                end
 
                 % Run Ik
                 [stats1, sol1] = benchmark.runIK(r, Qtarget_j, Qstart_j, Twt_target, param, isConvergedTol = opt.isConvergedTol);
@@ -161,7 +166,7 @@ function [filepath, data] = benchmark2(opt)
 
         % Save results
         subDir = sprintf('%s_%s', computer, date);
-        saveDir = fullfile( utils.QuIK_root, '+benchmark', 'save_data', 'singular_bench', subDir );
+        saveDir = fullfile( utils.QuIK_root, 'matlab', 'save_data', 'singular_bench', subDir );
         if ~exist( saveDir, 'dir' )
             mkdir( saveDir );
         end

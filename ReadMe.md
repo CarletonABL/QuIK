@@ -20,6 +20,7 @@ The codebase features a C++ and Matlab implementation of the QuIK method. It als
 		 * **Robot**: Header and C++ files for Robot definition, forward kinematics, jacobian computation, etc..
  * **matlab**: A folder containing all matlab code. To run the matlab code, you should add this directory to your path.
 	 * **+benchmark**: A matlab package containing functions that run the benchmarks from the paper.
+	 * **+examples**: A directory with several examples showing how the packages can be used, and allowing benchmarks from the paper to be reproduced.
 	 * **+IK_matlab**: A matlab package that allows the *Matlab robotics toolbox* functions to be compiled and run, using a mex adapter, in c-code.
 	 * **+KDL_IK**: A matlab package that allows the KDL library (from the C++) folder to be compiled into a mex-file, and run from matlab.
 	 * **+QuIK**: A matlab implementation of the QuIK algorithm. Provided for demonstration perposes - the matlab code is much slower than the C++ implementation.

@@ -35,7 +35,6 @@ function [filepath, data] = benchmark1(opt)
     utils.progress('Processing (time collection)...');
 
     % Time and stats variable
-    t = zeros(nErrors, nTests, opt.N2);
     stats = cell(nErrors, nTests, opt.N2);
 
     % Generate samples
@@ -70,9 +69,8 @@ function [filepath, data] = benchmark1(opt)
     stats = cell2mat(stats);
     
     % Save results
-    benchDir = fileparts(mfilename('fullpath'));
     subDir = sprintf('%s_%s', computer, date);
-    saveDir = fullfile( benchDir, 'save_data', 'time', subDir );
+    saveDir = fullfile( utils.QuIK_root, 'matlab', 'save_data', 'time', subDir );
     if ~exist( saveDir, 'dir' )
         mkdir( saveDir );
     end

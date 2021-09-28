@@ -25,4 +25,7 @@
 %  		Q_star: 6 x N, solved angles
 % 		e_star: double, N, error at solved angles
 % 		breakReason: int, N, reason for breaking.
-%
+
+function varargout = IK(varargin)
+    error("Error: KDL_IK not compiled. Run KDL_IK.make() to create a mex-file of the library. If you have already compiled the mex and are still recieving this error, Matlab may not have recognized the mex-file. Restarting matlab should fix this.");
+end

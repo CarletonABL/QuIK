@@ -63,7 +63,7 @@ function [filepath, data] = benchmark3(robots, opt)
     
     % Save results
     subDir = sprintf('%s_%s', computer, date);
-    saveDir = fullfile( utils.QuIK_root, '+benchmark', 'save_data', 'time', subDir );
+    saveDir = fullfile( utils.QuIK_root, 'matlab', 'save_data', 'compare', subDir );
     if ~exist( saveDir, 'dir' )
         mkdir( saveDir );
     end

@@ -19,6 +19,7 @@ scripts/
 *.autosave
 *.asv
 save_data/*
+**/save_data/*
 
 # Ignore config file
 *config.m

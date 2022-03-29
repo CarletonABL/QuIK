@@ -211,7 +211,7 @@ void Robot<DOF>::jacobian( Matrix<double,(DOF>0?4*(DOF+1):-1),4>& T, Matrix<doub
 template <int DOF>
 void Robot<DOF>::hessianProduct( const Matrix<double,6,DOF>& J, const Vector<double,DOF>& dQ, Matrix<double,6,DOF>& A) const{
 	
-	Vector3d cp, jvk, jwk;
+	Vector3d cp, jvk, jwk, Aw_k_sum;
 	// A.fill(0);
 	
 	if (!linkTypes.any()){
@@ -222,16 +222,25 @@ void Robot<DOF>::hessianProduct( const Matrix<double,6,DOF>& J, const Vector<dou
 			// First, iterate over off-diagonal terms
 			jvk = J.template block<3,1>(0,k);
 			jwk = J.template block<3,1>(3,k);
-			
+            
+            // Rotational terms can be simplified by avoiding half the cross products
+			// Initiate summer, then sum in loop before doing cross product.
+            Aw_k_sum << 0,0,0;
+            
 			for (int i = 0; i < k; i++){
 				// A(4:6, k) += jwi x jwk * dQi
-				A.template block<3,1>(3, k) += (J.template block<3,1>(3, i)).cross( jwk ) * dQ(i);
-
+				//           += (jwi * dQi) x jwk
+				// Can sum the first term in cross product first before computing cross product.
+                Aw_k_sum += J.template block<3,1>(3,i) * dQ(i);
+                
 				// A(1:3, k) += jwi x jvk*dQi
 				cp = J.template block<3,1>(3, i).cross( jvk );
 				A.template block<3,1>(0, k) += cp * dQ(i);
 				A.template block<3,1>(0, i) += cp * dQ(k); // Symmetry
 			}
+            
+            // Do final cross product for rotational term
+            A.template block<3,1>(3, k) += Aw_k_sum.cross( jwk );
 			
 			// For diagonal entries, can skip the omega term since jwk x jwk = 0
 			// A(4:6, k) += jwi x jwk * dQi = 0
@@ -271,5 +280,4 @@ void Robot<DOF>::hessianProduct( const Matrix<double,6,DOF>& J, const Vector<dou
 			} // end of inner for loop
 		} // end of outer for loop
 	} // end of branched if
-	
 }

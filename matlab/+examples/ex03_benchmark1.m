@@ -3,8 +3,9 @@
 % ==========================
 %
 % This script reproduces the first benchmark found in the paper "Fast
-% and Robust Inverse Kinematics using Halley's method", by Steffan Lloyd,
-% Rishad Irani, and Mojtaba Ahmadi.
+% and Robust Inverse Kinematics for Serial Robots using Halley's method", 
+% by Steffan Lloyd, Rishad Irani, and Mojtaba Ahmadi.
+% DOI: 10.1109/TRO.2022.3162954
 %
 % Performs a benchmarking comparison of the performance and
 % reliability of the QuIK/NR/BFGS algorithms at different perturbation
@@ -15,14 +16,14 @@
 
 %% Part 1: Code compilation
 % To compile the C++ code, you must have an eigen3 directory somewhere on
-% your computer. You can just clone this from the eigen github. You must
+% your computer. You can just clone this from the eigen github, 
+% https://gitlab.com/libeigen/eigen/-/releases/3.4.0. You must
 % tell matlab where to find this directory in /matlab/config.m.
 % Once this is done, you can run the code below which generates the
 % necessary mex-files.
 %
 % This code only needs to be run once per machine.
 
-% Compile C++ QuIK codebase
 QuIK_cpp.make();
 
 %% Benchmark 1: NR/QuIK comparison

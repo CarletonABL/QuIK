@@ -2,9 +2,10 @@
 % ex04_benchmark2
 % ==========================
 %
-% This script reproduces the second benchmark found in the paper "Fast
-% and Robust Inverse Kinematics using Halley's method", by Steffan Lloyd,
-% Rishad Irani, and Mojtaba Ahmadi.
+% This script reproduces the first benchmark found in the paper "Fast
+% and Robust Inverse Kinematics for Serial Robots using Halley's method", 
+% by Steffan Lloyd, Rishad Irani, and Mojtaba Ahmadi.
+% DOI: 10.1109/TRO.2022.3162954
 % 
 % Performs a comparison of the singularity robustness of the algorithms.
 %

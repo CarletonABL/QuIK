@@ -61,7 +61,10 @@ function [filepath, data] = benchmark2(opt)
         for j = 1:nConds
             utils.progress(j/nConds);
             condNum = condNums(j);
-            parfor i = 1:opt.N
+            % This may take some time.
+            % Change for to parfor in the next line if you have the
+            % parallel computing toolbox for a significant speed increase.
+            for i = 1:opt.N
                 % Select out a random direction vector
                 qpert_i = Qpert(:, i);
 

@@ -16,14 +16,6 @@ function [stats, sol] = runIK(r, Q, Q0, Twt, param, opt)
     % Number of samples
     N = size(Q0,2);
     
-    % Derate number of samples given to algorithm
-    if param.numDerate > 1 && false
-        N = round(N/param.numDerate);
-        Q = Q(:, 1:N);
-        Q0 = Q0(:, 1:N);
-        Twt = Twt(:, :, 1:N);
-    end
-        
     % Time it
     t1 = tic;
     switch param.entryFcnId

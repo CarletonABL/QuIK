@@ -25,7 +25,11 @@ function make(functions)
     IKdir = fileparts(mfilename('fullpath'));
     
     %% Build IK function
-    if any( strcmp( functions, 'IK' ) ) || any( strcmp( functions, 'all' ) )
+    % Note! Code generation with matlab IK function is not tested! Use with
+    % caution.
+    % 
+    % It is preferable to simply use the QuIK_cpp package instead!
+    if any( strcmp( functions, 'IK' ) )
         
         disp("Compiling QuIK.IK into mex...");
         
@@ -55,6 +59,7 @@ function make(functions)
                     'minStepSize', coder.typeof(0), ... % gradExitTol
                     'relImprovementTol', coder.typeof(0), ... % relImprovementTol
                     'maxGradFails', coder.typeof(int32(0)), ... % maxGradFails
+                    'maxGradFailsTotal', coder.typeof(int32(0)), ... % maxGradFails
                     'lambda2', coder.typeof(0), ... % Lambda parameter for damped newton
                     'maxLinearErrorStep', coder.typeof(0), ... % maxLinearErrorStep
                     'maxAngularErrorStep', coder.typeof(0), ... % maxAngularErrorStep

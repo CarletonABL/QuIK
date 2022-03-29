@@ -3,7 +3,7 @@
 
 This repository contains code to implement the QuIK algorithm, and others. It is provided as-is, with no guarantees of performance. The code in this repository is more full explained in the paper.
 
-S. Lloyd, R. A. Irani, and M. Ahmadi, “Fast and Reliable Inverse Kinematics using Halley's Method,” [Under review].
+S. Lloyd, R. Irani, and M. Ahmadi, "Fast and Robust Inverse Kinematics for Serial Robots using Halley’s Method," IEEE Transactions on Robotics, In Press, 2022.
 
 The codebase features a C++ and Matlab implementation of the QuIK method. It also includes code to reproduce the benchmarks in the paper above.and
 
@@ -56,3 +56,9 @@ All Matlab functions are well documented and well commented. To know the calling
 ### Robot Definitions
 
 This codebase defines several robots, for benchmarking, in the ``+robots`` package. Each robot is coded as a matlab function that returns a structure of DH parameters, base transform, and tool transform.
+
+## Citations
+
+If you use our work, please reference our publication below. Recommended citation:
+
+[1] S. Lloyd, R. Irani, and M. Ahmadi, "Fast and Robust Inverse Kinematics for Serial Robots using Halley’s Method," IEEE Transactions on Robotics, In Press, 2022.

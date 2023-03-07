@@ -3,7 +3,7 @@
 
 This repository contains code to implement the QuIK algorithm, and others. It is provided as-is, with no guarantees of performance. The code in this repository is more full explained in the paper.
 
-S. Lloyd, R. Irani, and M. Ahmadi, "Fast and Robust Inverse Kinematics for Serial Robots using Halley’s Method," IEEE Transactions on Robotics, In Press, 2022. A preprint of this paper can be found in the current repository, [SLloydEtAl2022_QuIK_preprint.pdf](SLloydEtAl2022_QuIK_preprint.pdf).
+S. Lloyd, R. Irani, and M. Ahmadi, "Fast and Robust Inverse Kinematics for Serial Robots using Halley’s Method," IEEE Transactions on Robotics, vol. 38, no. 5, pp. 2768–2780, Oct. 2022. doi: [10.1109/TRO.2022.3162954](http://dx.doi.org/10.1109/TRO.2022.3162954). A preprint of this paper can be found in the current repository, [SLloydEtAl2022_QuIK_preprint.pdf](SLloydEtAl2022_QuIK_preprint.pdf).
 
 The codebase features a C++ and Matlab implementation of the QuIK method. It also includes code to reproduce the benchmarks in the paper above.and
 
@@ -30,7 +30,7 @@ The codebase features a C++ and Matlab implementation of the QuIK method. It als
 
 ## Requirements
 ### C++ Requirements
-All code is given as simple cpp and hpp files. Code is arranged as a header-only library, so simply include the header files for the code you'd like to use. All functions rely on the [Eigen 3](https://eigen.tuxfamily.org) linear algebra library, so you will also need to link to an appropriate library.
+All code is given as simple cpp and hpp files. Code is arranged as a header-only library, so simply include the header files for the code you'd like to use. All functions rely on the [Eigen 3.4](https://eigen.tuxfamily.org) linear algebra library, so you will also need to link to an appropriate library.
 
 ### Matlab Requirements
 The matlab code given in the ``/matlab`` directory has only been tested on Matlab R2021a, and is not guaranteed to work on earlier versions. Additionally, benchmarking requires use of the Matlab Coder, Parallel Computing Toolbox and Robotics Toolbox add-ons.
@@ -61,4 +61,4 @@ This codebase defines several robots, for benchmarking, in the ``+robots`` packa
 
 If you use our work, please reference our publication below. Recommended citation:
 
-[1] [S. Lloyd, R. Irani, and M. Ahmadi, "Fast and Robust Inverse Kinematics for Serial Robots using Halley’s Method," IEEE Transactions on Robotics, In Press, 2022](SLloydEtAl2022_QuIK_preprint.pdf).
+[1] [S. Lloyd, R. A. Irani, and M. Ahmadi, “Fast and Robust Inverse Kinematics of Serial Robots Using Halley’s Method,” IEEE Transactions on Robotics, vol. 38, no. 5, pp. 2768–2780, Oct. 2022.](SLloydEtAl2022_QuIK_preprint.pdf) doi: [10.1109/TRO.2022.3162954](http://dx.doi.org/10.1109/TRO.2022.3162954).
